@@ -318,9 +318,74 @@
       <main class="p-3.5 sm:p-5 md:p-7">
 
         <!-- ============================================================== -->
-        <!-- SCREEN: ACTIVE GAME QUESTION (SHOWN DIRECTLY ON LOAD!)          -->
+        <!-- SCREEN 1: WELCOME & START SCREEN (SHOWN ON PAGE LOAD)          -->
         <!-- ============================================================== -->
-        <section id="questionScreen" class="space-y-4 sm:space-y-5">
+        <section id="startScreen" class="text-center space-y-6 py-2">
+          
+          <div class="inline-block p-4 rounded-3xl bg-blue-500/15 border-2 border-amber-400/50 text-5xl sm:text-6xl mb-1 shadow-inner animate-pulse">
+            🧮➕🏆
+          </div>
+
+          <div class="space-y-2">
+            <span class="inline-block px-4 py-1.5 rounded-full text-xs sm:text-sm font-black bg-emerald-500/20 text-emerald-300 border border-emerald-400/40">
+              الوحدة التعليمية: الجمع — الصف الرابع الأساسي
+            </span>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-['Cairo'] tracking-wide">
+              تحدي أبطال الجمع الذكي
+            </h2>
+            <p class="text-amber-300 font-black text-base sm:text-lg">
+              «أستطيع أن أجمع أزواج أعداد مكونة من رقمين بطريقة مناسبة»
+            </p>
+            <p class="text-slate-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed pt-1 font-medium">
+              أهلاً بكم يا أبطال الرياضيات في مدرسة الطالب الذكي (فرع نزوى)! أمامكم <strong class="text-amber-300 font-black">٥ محطات ذكية متنوعة</strong> في الجمع الذهني والرأسي وإعادة التجميع ومسألة الريال الخيري. اضغطوا زر البدء بالأسفل؛ لينطلق العداد الزمني وتبدأ الأسئلة فوراً!
+            </p>
+          </div>
+
+          <!-- Student or Group Name Input -->
+          <div class="max-w-md mx-auto space-y-3 pt-2">
+            <div class="text-right">
+              <label for="studentNameInput" class="text-sm font-black text-blue-300 block mb-1">
+                اسم البطل(ة) أو اسم المجموعة الرياضية:
+              </label>
+              <input id="studentNameInput" type="text" placeholder="اكتب اسم الطالب الثلاثي أو اسم المجموعة هنا..." value="بطل الرياضيات الذكي" class="w-full px-5 py-3.5 rounded-2xl bg-slate-950 border-2 border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 text-center font-black text-base sm:text-lg transition shadow-inner">
+            </div>
+            
+            <!-- THE PROMINENT START BUTTON -->
+            <button id="startGameBtn" onclick="startGame()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-black text-lg sm:text-xl shadow-xl shadow-amber-500/30 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer font-['Cairo'] flex items-center justify-center gap-2">
+              <span>🚀 ابدأ التحدي الآن (انطلاق العداد والأسئلة)</span>
+            </button>
+          </div>
+
+          <!-- 5 Questions Roadmap Preview (Zero QR code) -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 pt-3 max-w-2xl mx-auto text-xs sm:text-sm font-bold text-slate-300">
+            <div class="bg-slate-950/60 p-2.5 rounded-xl border border-slate-800 text-center">
+              <span class="block text-amber-400 font-black text-sm">س ١</span>
+              خط الأعداد
+            </div>
+            <div class="bg-slate-950/60 p-2.5 rounded-xl border border-slate-800 text-center">
+              <span class="block text-blue-400 font-black text-sm">س ٢</span>
+              متممات الأعداد
+            </div>
+            <div class="bg-slate-950/60 p-2.5 rounded-xl border border-slate-800 text-center">
+              <span class="block text-emerald-400 font-black text-sm">س ٣</span>
+              الجمع الرأسي
+            </div>
+            <div class="bg-slate-950/60 p-2.5 rounded-xl border border-slate-800 text-center">
+              <span class="block text-purple-400 font-black text-sm">س ٤</span>
+              الريال الخيري
+            </div>
+            <div class="col-span-2 sm:col-span-1 bg-amber-500/10 p-2.5 rounded-xl border border-amber-400/40 text-center">
+              <span class="block text-amber-300 font-black text-sm">س ٥ 👥</span>
+              تفكير ومناقشة
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ============================================================== -->
+        <!-- SCREEN 2: ACTIVE GAME QUESTION (APPEARS ONCE START IS CLICKED) -->
+        <!-- ============================================================== -->
+        <section id="questionScreen" class="hidden space-y-4 sm:space-y-5">
           
           <!-- Top Control & Status Bar -->
           <div id="gameStatusBar" class="flex flex-wrap items-center justify-between gap-2.5 bg-slate-950/90 p-3 rounded-2xl border border-slate-800">
@@ -333,21 +398,27 @@
               </div>
             </div>
 
-            <!-- Student Name Input Box -->
+            <!-- Active Student Name Display -->
             <div class="flex items-center gap-1.5 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700 text-xs">
-              <label for="studentNameInput" class="text-amber-300 font-black whitespace-nowrap">البطل(ة):</label>
-              <input id="studentNameInput" type="text" placeholder="اسمك أو مجموعتك..." value="بطل الرياضيات الذكي" class="bg-transparent text-white font-bold outline-none w-28 sm:w-36 text-center border-b border-amber-400/40 focus:border-amber-400">
+              <span class="text-amber-300 font-black">البطل(ة):</span>
+              <span id="activeStudentBadge" class="text-white font-bold">بطل الرياضيات الذكي</span>
             </div>
 
-            <!-- Score & Timer Display -->
-            <div class="flex items-center gap-3">
-              <div class="flex items-center gap-1.5 bg-amber-500/15 border border-amber-400/40 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black text-amber-300">
+            <!-- Score & Real-Time Counters Display -->
+            <div class="flex items-center gap-2.5">
+              <div class="flex items-center gap-1 bg-amber-500/15 border border-amber-400/40 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black text-amber-300">
                 <span>⭐ النقاط:</span>
                 <span id="scoreDisplay">٠ / ٥٠٠</span>
               </div>
-              <div class="flex items-center gap-1.5 bg-blue-500/15 border border-blue-400/40 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black text-blue-300">
+              <!-- Active Question Countdown -->
+              <div class="flex items-center gap-1 bg-blue-500/15 border border-blue-400/40 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-black text-blue-300" title="المؤقت التنازلي للسؤال">
                 <span>⏱️</span>
                 <span id="timerDisplay">٤٥ ث</span>
+              </div>
+              <!-- Active Total Elapsed Counter -->
+              <div class="hidden sm:flex items-center gap-1 bg-emerald-500/15 border border-emerald-400/40 px-2.5 py-1.5 rounded-xl text-xs font-black text-emerald-300" title="العداد التراكمي للتحدي">
+                <span>⏳</span>
+                <span id="totalElapsedDisplay">٠٠:٠٠</span>
               </div>
             </div>
 
@@ -413,7 +484,7 @@
         </section>
 
         <!-- ============================================================== -->
-        <!-- SCREEN: VICTORY CERTIFICATE & REVIEW REPORT (ON FINISH)         -->
+        <!-- SCREEN 3: VICTORY CERTIFICATE & REVIEW REPORT (ON FINISH)       -->
         <!-- ============================================================== -->
         <section id="resultScreen" class="hidden space-y-6 sm:space-y-8 text-center">
           
@@ -522,6 +593,8 @@
     let totalTimeTaken = 0;
     let timerSeconds = 45;
     let timerInterval = null;
+    let totalTimerInterval = null;
+    let totalSecondsElapsed = 0;
     let studentName = 'بطل الرياضيات الذكي';
 
     // 5 Comprehensive Cambridge Questions
@@ -730,6 +803,21 @@
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
         osc.start(now);
         osc.stop(now + 0.08);
+      } else if (type === 'start') {
+        // Grand Opening Chime
+        const chord = [440, 554.37, 659.25, 880];
+        chord.forEach((freq, idx) => {
+          const o = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          o.connect(g);
+          g.connect(audioCtx.destination);
+          o.type = 'triangle';
+          o.frequency.setValueAtTime(freq, now + idx * 0.08);
+          g.gain.setValueAtTime(0.18, now + idx * 0.08);
+          g.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.08 + 0.6);
+          o.start(now + idx * 0.08);
+          o.stop(now + idx * 0.08 + 0.6);
+        });
       } else if (type === 'victory') {
         const notes = [523.25, 659.25, 783.99, 1046.50];
         notes.forEach((freq, idx) => {
@@ -753,20 +841,41 @@
       if (soundEnabled) playSound('click');
     }
 
-    // Initialize Game Directly on Load
+    // ON PAGE LOAD: Ready on Start Screen (No Counter running yet!)
     window.addEventListener('DOMContentLoaded', () => {
-      initGame();
+      // Ensure screens are properly aligned
+      document.getElementById('startScreen').classList.remove('hidden');
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('resultScreen').classList.add('hidden');
     });
 
-    function initGame() {
+    // START GAME: Triggered ONLY when Start Button is clicked!
+    function startGame() {
+      playSound('start');
+
+      // Capture Student Name
+      const nameInput = document.getElementById('studentNameInput').value.trim();
+      studentName = nameInput || 'بطل الرياضيات الذكي';
+      document.getElementById('activeStudentBadge').textContent = studentName;
+      document.getElementById('certStudentName').textContent = studentName;
+
+      // Switch Screens: Hide Start, Show Question Screen
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('questionScreen').classList.remove('hidden');
+
+      // Initialize Game State
       startTime = new Date();
       currentQIndex = 0;
       score = 0;
       userAnswers = {};
+      totalSecondsElapsed = 0;
+
       updateScoreDisplay();
       renderNavBubbles();
       loadQuestion(0);
-      startTimer();
+
+      // START COUNTERS TO COUNT NOW!
+      startTimers();
     }
 
     function updateScoreDisplay() {
@@ -813,7 +922,7 @@
     function loadQuestion(idx) {
       currentQIndex = idx;
       updateNavStatus();
-      resetTimer();
+      resetQuestionTimer();
 
       const q = questionsData[idx];
 
@@ -945,9 +1054,28 @@
       }
     }
 
-    // Timer Control (45 Seconds per Question)
-    function startTimer() {
+    // TIMERS & COUNTERS (STARTS TO COUNT ONCE START BUTTON IS CLICKED)
+    function startTimers() {
+      // 1. Question Countdown Timer (45s per question)
+      resetQuestionTimer();
+
+      // 2. Cumulative Elapsed Stopwatch Counter
+      clearInterval(totalTimerInterval);
+      totalTimerInterval = setInterval(() => {
+        totalSecondsElapsed++;
+        const mins = Math.floor(totalSecondsElapsed / 60);
+        const secs = totalSecondsElapsed % 60;
+        const display = String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        const el = document.getElementById('totalElapsedDisplay');
+        if (el) el.textContent = toArabicDigits(display);
+      }, 1000);
+    }
+
+    function resetQuestionTimer() {
       clearInterval(timerInterval);
+      timerSeconds = 45;
+      document.getElementById('timerDisplay').textContent = toArabicDigits(45) + ' ث';
+      
       timerInterval = setInterval(() => {
         timerSeconds--;
         if (timerSeconds <= 0) {
@@ -959,12 +1087,6 @@
           document.getElementById('timerDisplay').textContent = toArabicDigits(timerSeconds) + ' ث';
         }
       }, 1000);
-    }
-
-    function resetTimer() {
-      timerSeconds = 45;
-      document.getElementById('timerDisplay').textContent = toArabicDigits(45) + ' ث';
-      startTimer();
     }
 
     function handleTimeOut() {
@@ -987,17 +1109,14 @@
       feedbackText.innerHTML = `<strong>الإجابة الصحيحة هي:</strong> (${q.options.find(o => o.correct).letter}) ${q.options.find(o => o.correct).text}.<br><strong>التفسير:</strong> ${q.explanation}`;
     }
 
-    // Finish Game & Victory Certificate Generation
+    // FINISH GAME & CERTIFICATE GENERATION
     function requestFinishGame() {
       clearInterval(timerInterval);
+      clearInterval(totalTimerInterval);
       playSound('victory');
 
       const endTime = new Date();
       totalTimeTaken = Math.round((endTime - startTime) / 1000);
-
-      const nameInput = document.getElementById('studentNameInput').value.trim();
-      studentName = nameInput || 'بطل الرياضيات الذكي';
-      document.getElementById('certStudentName').textContent = studentName;
 
       document.getElementById('questionScreen').classList.add('hidden');
       document.getElementById('resultScreen').classList.remove('hidden');
@@ -1070,11 +1189,14 @@
       });
     }
 
+    // RESTART: Back to Start Screen
     function restartGame() {
       playSound('click');
+      clearInterval(timerInterval);
+      clearInterval(totalTimerInterval);
       document.getElementById('resultScreen').classList.add('hidden');
-      document.getElementById('questionScreen').classList.remove('hidden');
-      initGame();
+      document.getElementById('questionScreen').classList.add('hidden');
+      document.getElementById('startScreen').classList.remove('hidden');
     }
 
     // Confetti Animation Canvas
