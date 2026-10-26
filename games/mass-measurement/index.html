@@ -87,7 +87,8 @@
       color: #d97706;
     }
     .timer-badge {
-      color: #dc2626;
+      color: #065f46;
+      transition: color 0.3s ease;
     }
     .question-box {
       background: #f8fafc;
@@ -225,7 +226,7 @@
     <div id="playArea">
       <div class="meta-bar">
         <div class="q-badge" id="qNumber">السؤال: ١ / ٥</div>
-        <div class="timer-badge" id="timer">⏱️ الوقت: ٣٠ ث</div>
+        <div class="timer-badge" id="timer">⏱️ الوقت: ٢:٠٠</div>
         <div class="score-badge" id="score">🌟 النقاط: ٠</div>
       </div>
 
@@ -348,13 +349,13 @@
 
     let currentQ = 0;
     let score = 0;
-    let timerSec = 30;
+    let timerSec = 120;
     let timerInterval = null;
     let isAnswering = false;
 
     function startTimer() {
       clearInterval(timerInterval);
-      timerSec = 30;
+      timerSec = 120;
       updateTimerDisplay();
       timerInterval = setInterval(() => {
         timerSec--;
@@ -367,7 +368,18 @@
     }
 
     function updateTimerDisplay() {
-      document.getElementById('timer').innerText = '⏱️ الوقت: ' + toArabic(timerSec) + ' ث';
+      const mins = Math.floor(timerSec / 60);
+      const secs = timerSec % 60;
+      const formatted = toArabic(mins) + ':' + (secs < 10 ? '٠' + toArabic(secs) : toArabic(secs));
+      const badge = document.getElementById('timer');
+      badge.innerText = '⏱️ الوقت: ' + formatted;
+      if (timerSec <= 15) {
+        badge.style.color = '#dc2626';
+        badge.style.fontWeight = '900';
+      } else {
+        badge.style.color = '#065f46';
+        badge.style.fontWeight = '800';
+      }
     }
 
     function loadQuestion() {
