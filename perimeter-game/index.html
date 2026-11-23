@@ -457,7 +457,7 @@
         }
     };
 
-    // بنك الأسئلة الخمسة المحكمة بدون افتكاسات (طابع عماني وتجميع مباشر)
+    // بنك الأسئلة الأربعة المحكمة بتوزيع متنوع لمواضع الإجابة الصحيحة (طابع عماني وتجميع مباشر)
     const questions = [
         {
             tag: "المَحَطَّةُ ١: مِنْصَّةُ احْتِفَالِ العِيدِ الوَطَنِيِّ عَلَى الشَّبَكَةِ",
@@ -477,6 +477,7 @@
                 <rect x="238" y="60" width="45" height="18" rx="4" fill="#16A34A"/>
                 <text x="260.5" y="73" font-family="Segoe UI" font-size="11.5" font-weight="900" fill="#FFFFFF" text-anchor="middle">٣ سم</text>
             </svg>`,
+            // الإجابة الصحيحة في الموضع الأول (index 0)
             options: ["١٦ سم", "١٥ سم", "٨ سم", "١٢ سم"],
             correctIndex: 0,
             feedbackCorrect: "أَحْسَنْتَ يَا بَطَلَ عُمَانَ! الْمُحِيطُ بِالتَّجْمِيعِ = ٥ + ٣ + ٥ + ٣ = ١٦ سم.",
@@ -498,8 +499,9 @@
                 <text x="18" y="65" font-family="Segoe UI" font-size="12" font-weight="900" fill="#C8102E" text-anchor="middle">٤ سم</text>
                 <text x="300" y="65" font-family="Segoe UI" font-size="12" font-weight="900" fill="#C8102E" text-anchor="middle">٤ سم</text>
             </svg>`,
-            options: ["٢٤ سم", "٣٢ سم", "١٢ سم", "٢٠ سم"],
-            correctIndex: 0,
+            // الإجابة الصحيحة في الموضع الثالث (index 2)
+            options: ["١٢ سم", "٣٢ سم", "٢٤ سم", "٢٠ سم"],
+            correctIndex: 2,
             feedbackCorrect: "رَائِعٌ جِدّاً! الْمُحِيطُ بِالتَّجْمِيعِ = ٨ + ٤ + ٨ + ٤ = ٢٤ سم.",
             feedbackWrong: "تَذَكَّرْ أَنَّ الْمُسْتَطِيلَ لَهُ طُولَانِ وَعَرْضَانِ: ٨ + ٤ + ٨ + ٤ = ٢٤ سم."
         },
@@ -514,33 +516,14 @@
                 <text x="68" y="68" font-family="Segoe UI" font-size="12" font-weight="900" fill="#B45309" text-anchor="middle">٦ م</text>
                 <text x="200" y="68" font-family="Segoe UI" font-size="12" font-weight="900" fill="#B45309" text-anchor="middle">٦ م</text>
             </svg>`,
-            options: ["٢٤ م", "٣٦ م", "١٢ م", "١٨ م"],
-            correctIndex: 0,
+            // الإجابة الصحيحة في الموضع الرابع (index 3)
+            options: ["١٢ م", "٣٦ م", "١٨ م", "٢٤ م"],
+            correctIndex: 3,
             feedbackCorrect: "بَارَكَ اللَّهُ فِيكَ! فِي الْمُرَبَّعِ نَجْمَعُ أَضْلَاعَهُ الأَرْبَعَةَ: ٦ + ٦ + ٦ + ٦ = ٢٤ م.",
             feedbackWrong: "احْذَرْ الضَّرْبَ بَدَلَ الجَمْعِ؛ الْمُحِيطُ = ٦ + ٦ + ٦ + ٦ = ٢٤ م (وَلَيْسَ ٣٦ م²)."
         },
         {
-            tag: "المَحَطَّةُ ٤: مُجَسَّمُ حِصْنِ جِبْرِينَ عَلَى شَبَكَةِ الْمُرَبَّعَاتِ",
-            text: "صَمَّمَتْ مَرْيَمُ شِعَاراً هَنْدَسِيّاً لِمُجَسَّمِ حِصْنِ جِبْرِينَ عَلَى شَبَكَةِ المُرَبَّعَاتِ كَمَا فِي الشَّكْلِ (كُلُّ مُرَبَّعٍ = ١ سم).. مَا هُوَ مُحِيطُ هَذَا الشَّكْلِ؟",
-            diagram: `<svg viewBox="0 0 320 135" style="max-height: 120px; width: 100%;">
-                <defs>
-                    <pattern id="g4" width="22" height="22" patternUnits="userSpaceOnUse">
-                        <rect width="22" height="22" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
-                    </pattern>
-                </defs>
-                <rect x="10" y="5" width="300" height="125" fill="url(#g4)" stroke="#94A3B8" stroke-width="1.5" rx="4"/>
-                <!-- شكل L: قاعدة 4 مربعات = 88، ارتفاع يسار 3 = 66، علوي 2 = 44، هبوط 1 = 22، يمين 2 = 44، هبوط 2 = 44 -->
-                <polygon points="100,95 188,95 188,51 144,51 144,29 100,29" 
-                         fill="#E0F2FE" stroke="#0284C7" stroke-width="4" stroke-linejoin="round"/>
-                <text x="135" y="75" font-family="Segoe UI" font-size="13" font-weight="900" fill="#0369A1" text-anchor="middle">حِصْنُ جِبْرِينَ</text>
-            </svg>`,
-            options: ["١٤ سم", "١٢ سم", "١٠ سم", "١٦ سم"],
-            correctIndex: 0,
-            feedbackCorrect: "مُمْتَازٌ جِدّاً! بِعَدِّ الخُطُوَاتِ حَوْلَ الإِطَارِ الخَارِجِيِّ فَقَطْ: ٤ + ٣ + ٢ + ١ + ٢ + ٢ = ١٤ سم.",
-            feedbackWrong: "تَذَكَّرْ أَنَّنَا نَعُدُّ حُدُودَ الإِطَارِ الخَارِجِيِّ فَقَطْ دُونَ الدَّاخِلِ: الْمُحِيطُ = ١٤ سم."
-        },
-        {
-            tag: "المَحَطَّةُ ٥: لُغْزُ سِيَاجِ حَدِيقَةِ احْتِفَالَاتِ مَسْقَطَ",
+            tag: "المَحَطَّةُ ٤: لُغْزُ سِيَاجِ حَدِيقَةِ احْتِفَالَاتِ مَسْقَطَ",
             text: "سِيَاجُ حَدِيقَةِ احْتِفَالَاتِ العِيدِ الوَطَنِيِّ شَكْلٌ رُبَاعِيٌّ مُحِيطُهُ الإِجْمَالِيُّ ٢٠ مِتْراً. إِذَا كَانَتْ أَطْوَالُ ثَلَاثَةِ أَضْلَاعٍ هِيَ: ٥ م ، ٦ م ، ٤ م.. فَمَا طُولُ الضِّلْعِ الرَّابِعِ المَفْقُودِ؟",
             diagram: `<svg viewBox="0 0 300 130" style="max-height: 115px; width: 100%;">
                 <polygon points="50,105 85,25 215,25 240,105" fill="#F0FDF4" stroke="#16A34A" stroke-width="4"/>
@@ -550,8 +533,9 @@
                 <text x="150" y="122" font-family="Segoe UI" font-size="13" font-weight="900" fill="#C8102E" text-anchor="middle">الضِّلْعُ المَفْقُودُ = ؟</text>
                 <text x="50" y="65" font-family="Segoe UI" font-size="12" font-weight="900" fill="#166534" text-anchor="middle">٥ م</text>
             </svg>`,
-            options: ["٥ م", "٦ م", "٧ م", "٤ م"],
-            correctIndex: 0,
+            // الإجابة الصحيحة في الموضع الثاني (index 1)
+            options: ["٤ م", "٥ م", "٦ م", "٧ م"],
+            correctIndex: 1,
             feedbackCorrect: "عَبْقَرِيٌّ يَا بَطَلَ الرِّيَاضِيَّاتِ! نَجْمَعُ: ٥ + ٦ + ٤ = ١٥ م، ثُمَّ نَطْرَحُ: ٢٠ - ١٥ = ٥ م.",
             feedbackWrong: "الخُطْوَةُ: نَجْمَعُ الأَضْلَاعَ الْمَعْلُومَةَ (٥ + ٦ + ٤ = ١٥ م)، ثُمَّ نَطْرَحُ مِنَ الْمُحِيطِ: ٢٠ - ١٥ = ٥ م."
         }
